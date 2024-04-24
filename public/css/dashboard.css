@@ -1,0 +1,241 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+.logo {
+    display: block;
+    width: 50%;
+    margin: auto;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+input[type="text"], input[type="password"], input[type="number"], input[type="email"], input[type="submit"], input[type="radio"] {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+#loginBtn, #signupBtn {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: #008CBA;
+    color: white;
+    cursor: pointer;
+}
+.btn-gray:hover, .btn-darkgray:hover {
+    background-color: #5a6268;
+}
+.button-group {
+    text-align: right; /* Align buttons to the right */
+    margin-bottom: 10px;
+}
+.button-group .btn {
+    margin: 0 5px; /* Spacing between buttons */
+}
+.button-group .btn:first-child {
+    margin-left: 0;
+}
+.button-group .btn:last-child {
+    margin-right: 0;
+}
+.btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.btn-right {
+    display: flex;
+    justify-content: flex-end; /* Align dropdown and button to the right */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.btn-right button {
+    padding: 8px 16px; /* Adjust padding for better appearance */
+}
+.btn-right select {
+    padding: 8px 8px;
+}
+.btn:hover {
+    background-color: #0056b3;
+}
+.btn-add {
+    background-color: #4CAF50;
+    color: white;
+}
+.btn-edit {
+    background-color: #f0ad4e;
+    color: white;
+}
+.btn-save {
+    background-color: #337ab7;
+    color: white;
+}
+.btn-cancel {
+    background-color: #d9534f;
+    color: white;
+}
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+.btn-white {
+    background-color: #ffffff;
+}
+.btn-blue {
+    background-color: #007bff;
+}
+.btn-red {
+    background-color: #dc3545;
+}
+.btn-green {
+    background-color: #28a745;
+}
+.btn-yellow {
+    background-color: #ffc107;
+}
+.btn-gray {
+    background-color: #6c757d;
+}
+.btn-yellow {
+    background-color: #ffc107;
+}
+.btn-turquoise {
+    background-color: #17a2b8;
+}
+.btn-darkgray {
+    background-color: #343a40;
+}
+.view-dropdown {
+    display: flex;
+    justify-content: flex-end; /* Align dropdown to the right */
+    margin-bottom: 10px;
+}
+.view-dropdown select {
+    padding: 8px 8px;
+}
+.search-button-full-width {
+    width: calc(100% - 10px); /* Full width minus margin */
+    margin-bottom: 10px;
+}
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+h2 {
+    font-size: 24px;
+    color: #333;
+}
+p {
+    font-size: 16px;
+    color: #666;
+}
+#currentTime, #sessionTime {
+    font-size: 12px;
+    color: #999;
+}
+a {
+    text-decoration: none;
+    color: #333;
+    margin-top: 10px;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* ******************************************************************************* */
+.image-slider-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+.image-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+        position: relative;
+        max-width: 600px;
+        margin: auto;
+}
+.menu-item {
+    flex: 0 0 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+.menu-item img {
+    width: 100%;
+}
+.menu-slide {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #3b3b3b;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(221, 221, 221, 0.02); /* 버튼 배경 불투명도 조정 */
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 60px;
+    color: #333;
+    z-index: 2; /* 버튼이 항상 위에 오도록 */
+}
+.prev {
+    left: 10px;
+}
+.next {
+    right: 10px;
+}

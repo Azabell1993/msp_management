@@ -1,0 +1,631 @@
+.sliding-button-container {
+    width: 600px;
+    height: 40px;
+    margin: 20px auto;
+    background-color: rgb(231, 231, 231);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.view-all-teams-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    margin-left: auto; /* Push the button to the right */
+}
+
+.slider-toggle {
+    display: none;
+}
+
+.sliding-button-label {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items without space around */
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0; /* Remove padding if any */
+}
+
+.slider-background {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    background-color: #fff;
+    width: calc(50%);
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.slider-button {
+    z-index: 2;
+    text-align: center;
+    width: 50%;
+    position: center;
+}
+#prevBoard {
+    left: 10px;
+}
+
+#nextBoard {
+    right: 10px;
+}
+.slider-button-right {
+    right: 0; /* Right-aligned button */
+}
+
+.slider-toggle:checked + .sliding-button-label .slider-background {
+    transform: translateX(calc(100% - 10px)); /* Move to the right, accounting for padding */
+}
+
+.slider-toggle:checked + .sliding-button-label .slider-button {
+    color: gray; /* Unchecked color */
+}
+
+.slider-toggle:checked + .sliding-button-label .slider-button-right {
+    color: black; /* Checked color */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between; /* Adjust if you want a different spacing */
+}
+
+.arrow-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.arrow-button img {
+    width: 100%;
+    height: auto;
+}
+
+.view-all-teams-button:hover {
+    background-color: #45a049; /* 버튼 hover 색상 */
+}
+
+.board-header {
+    z-index: 10; /* Ensure it's above other content */
+    width: calc(100%); /* Adjust width considering padding */
+    border-radius: 13px;
+    padding: 10px 20px; /* Padding for visual comfort */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 헤더 내용 중앙 정렬 */
+}
+
+.board-navigation {
+    display: left;
+    align-items: center;
+}
+
+
+.board-container {
+    position: relative; /* To position arrows absolutely relative to this container */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+    background: #f0f2f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0; /* Give some space above and below the container */
+}
+
+
+.board-navigation button {
+    background: none;
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.board-content {
+    display: flex;
+    overflow-x: auto;
+}
+
+.post-it-card {
+    background: #ffeb3b;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0; /* Adjusted for vertical spacing */
+    width: 100%; /* Full width within the department */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.status {
+    /* display: block; */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.assignees img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.department {
+    flex-basis: calc(50% - 20px); /* Adjust based on gap/margin */
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .department {
+        flex-basis: 100%; /* Full width on smaller screens */
+    }
+}
+@media (max-width: 768px) {
+    .arrow-button {
+        font-size: 18px; /* Smaller arrows on smaller screens */
+        width: 30px; /* Adjusted width */
+        height: 30px; /* Adjusted height */
+    }
+}
+/* .team-members {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.post-its {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+} */
+
+.team-members, .post-its {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust as needed */
+}
+
+.member {
+    margin-bottom: 10px;
+}
+
+
+/* 드롭존 스타일링 */
+.drop-zones-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+/* Updated drop zone styling to allow flex layout of post-its */
+.drop-zone-done, .drop-zone-ing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    gap: 10px; /* Space between post-its */
+    background-color: #fff;
+    border: 2px dashed #007bff; /* Blue for '진행 중', change if needed */
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 200px;
+    width: calc(50% - 20px); /* Adjust width as needed */
+    padding: 10px;
+    margin: 10px;
+}
+.drop-zone-done {
+    border-color: #ff1e00; /* Red for '완료' */
+}
+
+/* Ensure post-it styling allows for flexible sizing */
+.post-it {
+    flex: 0 1 auto;
+    /* Other styles remain unchanged */
+}
+.progress-display {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 2px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    width: 0%; /* Initial width */
+    border-radius: 3px;
+}
+
+/* 포스트잇 스타일링 */
+.post-it {
+    background-color: #ffeb3b;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    border-radius: 5px;
+    width: 0%; /* Initial width */
+}
+
+/* 포스트잇 추가 영역 스타일링 */
+#postItCreationArea {
+    margin: 10px;
+    text-align: center;
+}
+
+/* 추가 버튼 스타일링 */
+#postItCreationArea button {
+    padding: 5px 15px;
+    margin-left: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* 포스트잇에 텍스트 입력란 스타일링 */
+#postItContent {
+    padding: 5px;
+    width: 300px;
+}
+
+/* 포스트잇 컨테이너 스타일링 */
+#postItsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* 기본 페이지 스타일링 */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+strong {
+    color: #333;
+}
+
+p strong {
+    display: block;
+    text-align: center;
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 50px;
+    margin: 20px 0;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+/* 모달 스타일링 */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 10px;
+}
+
+/* 입력항목 스타일링 */
+input[type="text"] {
+    width: 95%; /* 너비 */
+    padding: 10px; /* 안쪽 여백 */
+    margin: 10px 0; /* 위아래 마진 */
+    border: 1px solid #ccc; /* 테두리 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 내부 그림자 */
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    border-radius: 13px;
+    margin: 15px;
+}
+.logo {
+    width: 10%;
+}
+/* 모달 닫기 버튼 */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 컨텍스트 메뉴 스타일 */
+.context-menu {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+    position: absolute;
+}
+
+.context-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.context-menu ul li {
+    padding: 8px 12px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.context-menu ul li:hover {
+    background-color: #f5f5f5;
+}
+.context-menu {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    background: #ffffff;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 중앙 정렬을 유지하면서 상단 마진 조정 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+    border-radius: 10px; /* 모달창의 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+/* 입력 필드 스타일 */
+#editInput {
+    width: calc(100% - 20px); /* 전체 너비에서 패딩 고려 */
+    padding: 10px; /* 입력 필드 내부 패딩 */
+    margin-bottom: 20px; /* 입력 필드와 버튼 사이의 마진 */
+    border: 1px solid #ccc; /* 경계선 스타일 */
+    border-radius: 5px; /* 입력 필드 모서리 둥글게 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 내부 그림자 효과 */
+}
+.modal-save-content {
+    background-color: #fefefe;
+    min-height: 600px;
+    width: 300px;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 13px;
+    width: 30%;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-footer {
+    display: flex;
+    justify-content: center; /* 버튼들을 가운데 정렬 */
+    align-items: center; /* 수직 방향에서도 중앙 정렬 */
+    text-align: center;
+    flex-direction: row; /* 버튼들을 가로로 배열 */
+    flex-wrap: wrap; /* 내용이 넘칠 경우 다음 줄로 넘김 */
+    padding: 10px 0; /* 상단과 하단에 패딩 추가 */
+}
+input[type="text"]:focus {
+  border-color: #4A90E2;
+  outline: none;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+.btn {
+    padding: 10px 20px;
+    margin-right: 10px; /* 버튼 간의 마진 */
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    font-weight: bold; /* 글꼴 두께 */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+.btn-right, .view-dropdown {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.btn-add {
+    background-color: #4CAF50;
+    color: white;
+}
+.btn-edit {
+    background-color: #f0ad4e;
+    color: white;
+}
+.btn-save {
+    background-color: #337ab7;
+    color: white;
+}
+/* .btn-cancel {
+    background-color: #d9534f;
+    color: white;
+} */
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+.btn-white {
+    background-color: #ffffff;
+}
+.btn-blue {
+    background-color: #007bff;
+}
+.btn-red {
+    background-color: #dc3545;
+}
+.btn-minred {
+    background-color: #dd2f2f;
+}
+.btn-green {
+    background-color: #28a745;
+}
+.btn-yellow {
+    background-color: #ffc107;
+}
+.btn-gray {
+    background-color: #6c757d;
+}
+.btn-turquoise {
+    background-color: #17a2b8;
+}
+.btn-darkgray {
+    background-color: #343a40;
+}
+
+
+.post-section input[type="text"],
+.post-section input[type="date"],
+.post-section button {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.post-section input,
+.post-section button {
+    margin-bottom: 1px;
+}
+.post-section {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.post-section input {
+    width: 100%; /* 너비 100%로 설정하여 가득 채우기 */
+    padding: 10px; /* 패딩 추가 */
+    margin-bottom: 1px; /* 마진 하단 추가 */
+    border: 1px solid #ddd; /* 경계선 설정 */
+    border-radius: 4px; /* 경계선 둥글게 */
+    box-sizing: border-box; /* 박스 사이징 설정 */
+}
+.post-buttons {
+    display: flex;
+    justify-content: space-between; /* 버튼 사이에 공간 배분 */
+    width: 100%; /* 너비 100%로 설정 */
+}
+.post-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+.post-section {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: flex-start;
+}
